@@ -8,3 +8,7 @@
 10.times do
   Category.create(name: Faker::Commerce.department(1))
 end
+
+150.times do
+  Article.create(title: Faker::Hipster.sentence(4), description: Faker::Hipster.paragraph(3), author: Faker::Internet.user_name, email: Faker::Internet.email, price: Faker::Commerce.price, category_id: (rand(10) + 1))
+end
