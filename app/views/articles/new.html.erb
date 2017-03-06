@@ -1,0 +1,42 @@
+<h1>Create a new post</h1>
+<% if @article.errors.any? %>
+   <div id="error_explanation">
+     <h2>
+       <%= pluralize(@article.errors.count, "error") %> prohibited
+       this article from being saved:
+     </h2>
+     <ul>
+       <% @article.errors.full_messages.each do |msg| %>
+         <li><%= msg %></li>
+       <% end %>
+     </ul>
+   </div>
+ <% end %>
+
+<%= form_for :article, url: articles_path do |a| %>
+  <p>
+    <%= a.label :title %>
+    <%= a.text_field :title %>
+  </p>
+  <p>
+    <%= a.label :description %>
+    <%= a.text_area :description %>
+  </p>
+  <p>
+    <%= a.label :author %>
+    <%= a.text_field :author %>
+  </p>
+  <p>
+    <%= a.label :email %>
+    <%= a.email_field :email %>
+  </p>
+  <p>
+    <%= a.label :price %>
+    <%= a.number_field :price %>
+  </p>
+    <%=a.hidden_field :category_id %>
+  <p>
+    <%= a.submit %>
+  </p>
+
+<% end %>

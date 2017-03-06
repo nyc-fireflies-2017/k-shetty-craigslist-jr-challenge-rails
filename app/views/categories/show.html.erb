@@ -2,6 +2,8 @@
 
 <ul>
   <% @articles.each do |article| %>
-    <li><%=article.title%></li>
+    <li><a href="/articles/<%=article.id%>"</a><%=article.title%></li>
   <% end %>
 </ul>
+
+<%= link_to "Create New Post", new_article_path(category_id: @category.id) %>
